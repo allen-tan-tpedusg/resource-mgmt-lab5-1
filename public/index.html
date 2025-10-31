@@ -1,12 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEVOPS - Resource Management Web App</title>
-  </head>
-  <body>
-    <h1>Welcome to my Resource Management Web Application</h1>
-    <p>In this application, users will get to manage resources.</p>
-  </body>
+    <title>DVOPS - Resource Management Web App</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="js/add-resource.js?ou=815629"></script>
+    <link rel="stylesheet" href="css/styles.css?ou=815629">
+<script>window.addEventListener('message', function(event) { 
+					if( !event.data ) {
+						return;
+					}
+
+					let params;
+					try {
+						params = JSON.parse( event.data );
+					}
+					catch {
+						return;
+					}
+					if( !params.subject || params.subject !== 'lti.frameResize' ) {
+						return;
+					}
+
+					const MAX_FRAME_HEIGHT = 10000;
+					if( !params.height || params.height < 1 || params.height > MAX_FRAME_HEIGHT ) {
+						console.warn( 'Invalid height value received, aborting' );
+						return;
+					}
+					const el = document.getElementsByTagName( 'iframe' );
+					for ( let i=0; i < el.length; i++ ) {
+						if( el[i].contentWindow === event.source ) {
+							el[i].style.height = params.height + 'px';
+
+							console.info( 'Setting iFrame height to ' + params.height );
+
+							if( el[i].getAttribute('lockwidth') !== 'true'){
+								el[i].style.width = '100%';
+								console.info( 'Setting iFrame width to 100%' );
+							}
+						}
+					}
+				});</script><script src="https://s.brightspace.com/lib/bsi/2025.10.239/unbundled/embeds.js" type="module"></script><script>document.addEventListener('DOMContentLoaded', function() {
+					window.D2L.EmbedRenderer.renderEmbeds(document.body);
+				});</script><script src="https://s.brightspace.com/lib/bsi/2025.10.239/unbundled/mathjax.js" type="module"></script><script>document.addEventListener('DOMContentLoaded', function() {
+						if (document.querySelector('math, .d2l-element, .d2l-cplus-layout') || /\$\$|\\\(|\\\[|\\begin{|\\ref{|\\eqref{/.test(document.body.innerHTML)) {
+							document.querySelectorAll('mspace[linebreak="newline"]').forEach(elm => {
+								elm.setAttribute('style', 'display: block; height: 0.5rem;');
+							});
+
+							document.querySelectorAll('math mmultiscripts > none').forEach(elm => {
+								const mrow = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mrow');
+								elm.replaceWith(mrow);
+							});
+
+							window.D2L.MathJax.loadMathJax({
+								outputScale: 1.5,
+								renderLatex: true,
+								enableMML3Support: false
+							});
+						}
+					});</script><script src="https://s.brightspace.com/lib/bsi/2025.10.239/unbundled/prism.js" type="module"></script><script>document.addEventListener('DOMContentLoaded', function() {
+					document.querySelectorAll('.d2l-code').forEach(code => {
+						window.D2L.Prism.formatCodeElement(code);
+					});
+				});</script><script src="https://s.brightspace.com/lib/bsi/2025.10.239/unbundled/creator.js" type="module"></script><script>document.addEventListener('DOMContentLoaded', async () => {
+					const activities = [];
+					const practices = [];
+					const allPractices = document.querySelectorAll('.d2l-practice');
+					const elements = document.querySelectorAll('.d2l-element');
+					let layouts = [...document.querySelectorAll('.d2l-cplus-layout')];
+					const tables = document.querySelectorAll('table');
+					const contentStylerStyleLinks = document.querySelectorAll('head > link[href="https://templates.lcs.brightspace.com/lib/assets/css/styles.min.css"]');
+					const contentStylerOverides = document.querySelectorAll('head > link[href^="/d2l/le/contentstyler/"][data-override="override"]');
+
+					layouts = layouts.filter((layout) => layout.closest('.d2l-element.mceNonEditable') === null);
+
+					for (const practice of allPractices) {
+						const activityContainer = practice.hasAttribute('data-d2l-activity-href');
+						if (activityContainer) {
+							activities.push(practice);
+						}
+						else {
+							practices.push(practice);
+						}
+					}
+
+					if (layouts.length > 0) {
+						window.D2L.Creator.convertLayouts(layouts);
+					}
+					if (elements.length > 0) {
+						window.D2L.Creator.convertElements(elements, 815629, '/content/enforced/815629-25S2-PET-C-CIT2C22/');
+					}
+					if (activities.length > 0) {
+						window.D2L.Creator.convertPracticeActivities(activities, 815629, '/content/enforced/815629-25S2-PET-C-CIT2C22/');
+					}
+					if (practices.length > 0) {
+						window.D2L.Creator.convertPractices(practices, 815629, '/content/enforced/815629-25S2-PET-C-CIT2C22/');
+					}
+					if (contentStylerStyleLinks.length > 0 && contentStylerOverides.length > 0 && tables.length > 0) {
+						window.D2L.Creator.wrapTables(tables);
+					}
+				});</script><script>function lti_launch( vars, target ) {
+						var query = '';
+						var new_tab = false;
+
+						for(var key in vars) {
+							if(query.length == 0) {
+								query += '?' + key + '=' + encodeURIComponent(vars[key]);
+							}
+							else {
+								query += '&' + key + '=' + encodeURIComponent(vars[key]);
+							}
+						}
+
+						var url = '/d2l/customization/pearsonlti/815629/Launch' + query;(target == '_blank') ? window.open( url, '_blank' ) : location.replace( url );}</script></head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <img src="images/logo.png?ou=815629">
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#resourceModal">
+                    Add Resource
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="resourceModal" tabindex="-1" role="dialog" aria-labelledby="resourceModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="resourceModalLabel">Add New Resource</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="name">Resource Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter resource name">
+              </div>
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" id="location" placeholder="Enter resource location">
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" placeholder="Enter short description">
+              </div>
+              <div class="form-group">
+                <label for="description">Owner</label>
+                <input type="text" class="form-control" id="owner" placeholder="Enter resource owner">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="addResource()">Add Resource</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </body>
 </html>
