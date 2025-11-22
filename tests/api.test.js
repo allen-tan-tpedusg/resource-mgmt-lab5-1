@@ -27,6 +27,7 @@ describe('Resource Management API', () => {
   
     // Store the resource ID for later tests (edit, delete)
     resourceId = res.body[res.body.length - 1].id;
+    console.log ('ID created ' + resourceId ) ;
   });
 
   // Test case to verify that all resources can be retrieved
@@ -39,6 +40,7 @@ describe('Resource Management API', () => {
     
     // Check that the previously added resource appears in the list
     expect(res.body.some(r => r.id === resourceId)).toBe(true);
+    console.log ('Resources ' +  JSON.stringify(res.body, null, 2) ) ;
   });
   
   it('PUT /edit-resource should update a resource', async () => {
@@ -72,8 +74,8 @@ describe('Resource Management API', () => {
     const getRes = await request(app).get('/view-resources');
 
     // Check that the new resource exists in the returned list
-    expect(getRes.body.some(r => r.id === resourceId)).toBe(false); 
-  
+    expect(getRes.body.some(r => r.id === resourceId)).toBe(false);
+    
   });
 
 });
