@@ -4,7 +4,7 @@
   "description": "Project files for Dev Ops Lab 1",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,6 @@
     "fs": "^0.0.1-security"
   },
   "devDependencies": {
-    "jest": "^30.2.0"
+    "supertest": "^7.1.4"
   }
 }
