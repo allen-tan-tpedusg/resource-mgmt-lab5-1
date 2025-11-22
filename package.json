@@ -15,6 +15,7 @@
     "fs": "^0.0.1-security"
   },
   "devDependencies": {
+    "jest": "^30.2.0",
     "supertest": "^7.1.4"
   }
 }
