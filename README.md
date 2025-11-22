@@ -1,2 +1,2 @@
-# resource-mgmt-lab2-2
-Project files for Dev Ops Lab 2 Lesson 2
+# resource-mgmt-lab4
+Project files for Dev Ops Lab 4
