@@ -1,2 +1,2 @@
-# resource-mgmt-lab4
-Project files for Dev Ops Lab 4
+# resource-mgmt-lab5-1
+Project files for Dev Ops Lab 5-1 Frontend Testing
